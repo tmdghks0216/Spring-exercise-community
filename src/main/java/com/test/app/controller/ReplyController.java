@@ -13,7 +13,7 @@ public class ReplyController {
 
 	@Autowired
 	private ReplyService ReplyService;
-	
+	//댓글달기
 	@RequestMapping(value ="replyup.do" )
 	public String replyinsert(ReplyVO vo,Model model) {
 		
@@ -21,6 +21,7 @@ public class ReplyController {
 		return "detail.do";
 		
 	}
+	//댓글삭제
 	@RequestMapping(value ="replydelete.do" )
 	public String replydelete(ReplyVO vo,Model model) {
 		System.out.println(vo);

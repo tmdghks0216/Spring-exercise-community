@@ -33,12 +33,12 @@ public class BoardController {
 	private BoardService boardService;
 	@Autowired
 	private ReplyService ReplyService;
-
+	//메인페이지
 	@RequestMapping(value="/main.do")
 	public String getBoardList(BoardVO vo,Model model,HttpSession session) throws ParseException {
 		List<BoardVO> data=new ArrayList<BoardVO>() ;
 		periodCk(boardService.getBoardListALL());
-		if(vo.getEvent()!=null) {
+		if(vo.getEvent()!=null) {//메인페이지 운동종목 선택시 
 			data=boardService.getBoardListevent(vo);
 		
 		}else {
@@ -49,6 +49,7 @@ public class BoardController {
 		
 		return "main.jsp";
 	}
+	//게시물 상세페이지
 	@RequestMapping(value="/detail.do")
 	public String getBoard(BoardVO vo,ReplyVO rvo,Model model) {
 		boardService.viewupBoard(vo);
@@ -62,6 +63,7 @@ public class BoardController {
 		return "detail.jsp";
 
 	}
+	//게시물 목록보기
 	@RequestMapping(value="/board.do")
 	public String getBoardListCoategory(BoardVO vo,Model model,HttpServletRequest requset) throws ParseException {
 		System.out.println(vo);
@@ -98,6 +100,7 @@ public class BoardController {
 		return "board.jsp";
 
 	}
+	//게시물삭제
 	@RequestMapping(value="/dletboard.do")
 	public String dletboard(BoardVO vo,Model model,HttpSession session,ReplyVO rvo) {
 		System.out.println(vo);
@@ -107,16 +110,17 @@ public class BoardController {
 		return "redirect:main.do";
 
 	}
-	
+	//게시물 작성
 	@RequestMapping(value="/boardinsert.do")
 	public String insertboard(BoardVO vo,Model model ,HttpSession session) {
 		System.out.println(vo);
 		vo.setMid((String) session.getAttribute("id"));
-		vo.setbPhoto(vo.getEvent()+".png");
+		vo.setbPhoto(vo.getEvent()+".png");//운동 종목에 따라서 지정 사진 적용
 		boardService.insertBoard(vo);
 		return "redirect:main.do";
 
 	}
+	//게시물 업데이트 뷰
 	@RequestMapping(value="/boardupdatview.do")
 	public String updateboardview(BoardVO vo,Model model,HttpSession session) {
 		System.out.println(vo);
@@ -126,6 +130,7 @@ public class BoardController {
 		return "boardUpdate.jsp";
 
 	}
+	//게시물 업데이트
 	@RequestMapping(value="/boardupdat.do")
 	public String updateboard(BoardVO vo,Model model,HttpSession session) {
 		System.out.println(vo);
