@@ -40,7 +40,7 @@ public class BoardController {
 		periodCk(boardService.getBoardListALL());
 		if(vo.getEvent()!=null) {
 			data=boardService.getBoardListevent(vo);
-			System.out.println(data);
+		
 		}else {
 
 			data=boardService.getBoardListALL();
