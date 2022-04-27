@@ -32,7 +32,7 @@ public class memController {
 	private BoardService boardservice;
 	
 	
-	
+	//로그인
 	@RequestMapping(value ="login.do" )
 	public String login(MemVO vo,HttpSession session,HttpServletRequest request, HttpServletResponse response,Model model) throws IOException{
 		System.out.println(vo);
@@ -55,7 +55,7 @@ public class memController {
 		}
 		return "redirect:main.do";
 	}
-	
+	//로그아웃
 	@RequestMapping(value ="logout.do" )
 	public String logout(MemVO vo,HttpSession session){
 		session.invalidate();
@@ -63,6 +63,7 @@ public class memController {
 		return "redirect:main.do";
 		
 	}
+	//신고
 	@RequestMapping(value ="report.do" )
 	public String report(MemVO mvo,HttpSession session){
 		memService.report(mvo);
@@ -70,6 +71,7 @@ public class memController {
 		return "redirect:main.do";
 		
 	}
+	//마이페이지
 	@RequestMapping(value ="mypage.do" )
 	public String mypage(MemVO mvo,HttpSession session,Model model,BoardVO bvo){
 		mvo.setMid((String) session.getAttribute("id"));
@@ -81,6 +83,7 @@ public class memController {
 		return "mypage.jsp";
 		
 	}
+	//비밀번호 변경
 	@ResponseBody
 	@RequestMapping(value ="/updatePw.do", method =   RequestMethod.POST , produces = "application/json; charset=utf-8" )
 	public String pwUpdate(MemVO mvo,HttpSession session,Model model){
@@ -93,6 +96,7 @@ public class memController {
 	
 		
 	}
+	//전화번호 인증
 	@ResponseBody
 	@RequestMapping(value ="/phoneck.do", method =   RequestMethod.POST , produces = "application/json; charset=utf-8" )
 	public String phoneck(MemVO mvo,HttpSession session,Model model){
@@ -113,6 +117,7 @@ public class memController {
 		return  Integer.toString(key);
 	}
 }
+	//아이디 중복체크
 	@ResponseBody
 	@RequestMapping(value ="/idck.do", method =   RequestMethod.POST , produces = "application/json; charset=utf-8" )
 	public String idck(MemVO mvo,HttpSession session,Model model){
@@ -125,6 +130,7 @@ public class memController {
 		
 		
 	}
+	//이용자 가입여부 확인
 	@ResponseBody
 	@RequestMapping(value ="/memck.do", method =   RequestMethod.POST , produces = "application/json; charset=utf-8" )
 	public String memck(MemVO mvo,HttpSession session,Model model){
@@ -137,6 +143,7 @@ public class memController {
 		
 		
 	}
+	//회원가입
 	@RequestMapping(value ="signUp.do" )
 	public String signUp(MemVO mvo,HttpSession session,Model model){
 System.out.println(mvo);
@@ -144,6 +151,7 @@ System.out.println(mvo);
 		return "main.do";
 		
 	}
+	//회원탈퇴
 	@RequestMapping(value ="deletmem.do" )
 	public String deletmem(MemVO mvo,HttpSession session,Model model){
 
