@@ -14,7 +14,7 @@ import com.test.app.VO.ReplyVO;
 
 
 
-@Repository("replyDAO")
+
 public class ReplyDAO {
 	
 	@Autowired

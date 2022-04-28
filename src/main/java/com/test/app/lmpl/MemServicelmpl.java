@@ -3,7 +3,8 @@ package com.test.app.lmpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.test.app.DAO.MemDAO;
+
+import com.test.app.DAO.MemDAO2;
 import com.test.app.Service.MemService;
 import com.test.app.VO.MemVO;
 
@@ -11,7 +12,7 @@ import com.test.app.VO.MemVO;
 public class MemServicelmpl implements MemService{
 
 	@Autowired
-	private MemDAO memDAO;
+	private MemDAO2 memDAO;
 		
 	@Override
 	public void insertMember(MemVO vo) {

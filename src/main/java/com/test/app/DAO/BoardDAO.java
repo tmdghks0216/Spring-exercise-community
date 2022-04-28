@@ -13,7 +13,7 @@ import com.test.app.VO.BoardVO;
 
 
 
-@Repository("boardDAO")
+
 public class BoardDAO {
 
 	@Autowired

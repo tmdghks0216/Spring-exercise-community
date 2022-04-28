@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="aa" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -39,6 +39,14 @@
 	box-sizing: border-box; /* 이 설정을 하지 않으면 슬라이드드가 틀어짐 */
 	overflow: hidden;
 }
+.button1{
+background:#6e7772; 
+border:none;
+ color: white;
+
+
+}
+
 </style>
 </head>
 <body class="is-preload">
@@ -109,7 +117,7 @@
 				<!-- Section -->
 				<section>
 					<header class="major">
-						<h2>Ipsum sed dolor</h2>
+						<h2>게시물</h2>
 					</header>
 					<div class="posts">
 						<c:forEach var="v" items="${bdata}">
@@ -118,7 +126,7 @@
 					<article>
 								<a href="detail.do?bpk=${v.bpk}" class="image"><img
 									src="img/${v.bPhoto}" alt="" /></a>
-								<button class="button" style="float: right; background:#6e7772; color: white;" >${v.status }</button>
+								<button class="button primary" style="float: right; background:#6e7772; color: white;" >${v.status }</button>
 								<h4>${v.title}</h4>
 								<br>
 								<br>
@@ -128,12 +136,12 @@
 
 										</c:when>
 										<c:otherwise>
-											<li><button class="button">${v.condition }</button></li>
+											<li><button class="button primary" style="background:#6e7772; border:none; color: white;">${v.condition }</button></li>
 										</c:otherwise>
 									</c:choose>
 
-									<li><button class="button">${v.bArea}</button></li>
-									<li><button class="button">${v.event }</button></li>
+									<li><button class="button primary" style="background:#6e7772;">${v.bArea}</button></li>
+									<li><button class="button primary"style="background:#6e7772;">${v.event }</button></li>
 								</ul>
 								<div class="ditailday" style="font-size: 1.1em;">작성자 :
 									${v.mid }</div>
@@ -142,7 +150,7 @@
 								<br>
 								<br>
 								<div class="ditailday" style="float: right; font-size: 1.1em;">모집기간
-									: ${v.bdate } ~ ${v.period.substring(0, 10)}</div>
+									: <fmt:formatDate pattern="yyyy-MM-dd" value="${v.bdate }"/> ~ ${v.period.substring(0, 10)}</div>
 							</article>
 										</c:when>
 										<c:otherwise>
@@ -174,7 +182,7 @@
 								<br>
 								<br>
 								<div class="ditailday" style="float: right; font-size: 1.1em;">모집기간
-									: ${v.bdate } ~ ${v.period.substring(0, 10)}</div>
+									: <fmt:formatDate pattern="yyyy-MM-dd" value="${v.bdate }"/> ~ ${v.period.substring(0, 10)}</div>
 							</article>
 											
 											

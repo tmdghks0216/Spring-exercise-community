@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="replyDAO">
+
+<insert id="replyinsert">
+INSERT INTO REPLY(RPK,BPK,MID,MSG) VALUES((SELECT NVL(MAX(RPK),0)+1 FROM REPLY),#{bpk},#{mid},#{msg})
+</insert>
+
+
+<delete id="replydelete">
+DELETE REPLY WHERE RPK=#{rpk} AND BPK=#{bpk}
+</delete>
+
+<delete id="replydeletebpk">
+DELETE REPLY WHERE BPK=#{bpk}
+</delete>
+
+<select id="replyselectall" resultType="reply">
+SELECT * FROM REPLY WHERE BPK=#{bpk}   ORDER BY RDATE  DESC
+</select>
+
+
+
+
+
+</mapper>
+	

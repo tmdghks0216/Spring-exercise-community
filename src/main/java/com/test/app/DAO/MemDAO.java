@@ -13,7 +13,7 @@ import com.test.app.VO.MemVO;
 
 
 
-@Repository
+
 public class MemDAO {
 	
 	@Autowired

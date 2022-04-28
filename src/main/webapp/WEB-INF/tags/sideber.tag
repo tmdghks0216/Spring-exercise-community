@@ -30,7 +30,7 @@
 					</header>
 					<p>여러 필터를 이용하여 조회가 가능하고 신고 기능이 가능한 스프링 프레임워크 기반의
 같이 운동할 사람들을 찾는 사이트 입니다.
-.</p>
+</p>
 					<ul class="contact">
 						<li class="icon solid fa-envelope">tmdghks0216@naver.com</li>
 						<li class="icon solid fa-phone">010-2555-6482</li>

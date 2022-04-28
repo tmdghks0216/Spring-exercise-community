@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+
+<configuration>
+
+   <!-- 별칭,별명,Alias 설정 -->
+   <typeAliases>
+      <typeAlias type="com.test.app.VO.BoardVO" alias="board" />
+      <typeAlias type="com.test.app.VO.ReplyVO" alias="reply" />
+       <typeAlias type="com.test.app.VO.MemVO" alias="mem" />
+   </typeAliases>
+   
+   <!-- DataSource 설정 -->
+   <mappers>
+   <mapper resource="mappings/board-mapping.xml"/>
+    <mapper resource="mappings/reply-mapping.xml"/>
+     <mapper resource="mappings/mem-mapping.xml"/>
+   </mappers>
+
+</configuration>

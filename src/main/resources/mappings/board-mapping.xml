@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+
+<!-- 	<resultMap type="board" id="boardResult"> -->
+<!-- 			<id property="bpk" column="bpk" /> -->
+<!-- 		<result property="bArea" column="bArea" /> -->
+<!-- 		<result property="bcategory" column="bcategory" /> -->
+<!-- 		<result property="event" column="event" /> -->
+<!-- 		<result property="condition" column="condition" /> -->
+<!-- 		<result property="bPhoto" column="bPhoto" /> -->
+<!-- 		<result property="title" column="title" /> -->
+<!-- 		<result property="mid" column="mid" /> -->
+<!-- 		<result property="content" column="content" /> -->
+<!-- 		<result property="bdate" column="bdate" /> -->
+<!-- 		<result property="period" column="period" /> -->
+<!-- 		<result property="views" column="views" /> -->
+<!-- 		<result property="badrr" column="badrr" /> -->
+<!-- 		<result property="status" column="status" /> -->
+<!-- 	</resultMap> -->
+
+	<select id="BOARD_SELECTALL" resultType="board">
+		SELECT * FROM BOARD
+	</select>
+	<select id="BOARD_SELECTALL_MID" resultType="board">
+		SELECT * FROM BOARD WHERE MID=#{mid}
+	</select>
+	<select id="BOARD_SELECTALL_event" resultType="board">
+		SELECT * FROM BOARD WHERE EVENT=#{event}
+	</select>
+	<select id="BOARD_SELECTALLbArea" resultType="board">
+		SELECT * FROM BOARD WHERE BAREA=#{bArea}
+	</select>
+		<select id="BOARD_SELECTONE" resultType="board">
+		SELECT * FROM BOARD WHERE BPK=#{bpk}
+	</select>
+		<select id="BOARD_SELECTALL_Category" resultType="board">
+		SELECT * FROM BOARD WHERE BCATEGORY=#{bcategory}
+	</select>
+	
+		<select id="BOARD_SELECTONE_Category_BAREA" resultType="board">
+		SELECT * FROM BOARD WHERE BCATEGORY=#{bcategory} AND BAREA=#{bArea}
+	</select>
+		<select id="BOARD_SELECTALL_Category_BAREA_CONDITION" resultType="board">
+		SELECT * FROM BOARD WHERE BCATEGORY=#{bcategory} AND BAREA=#{bArea} AND CONDITION=#{condition}
+	</select>
+			<select id="BOARD_SELECTALL_Category_BAREA_CONDITION_EVENT" resultType="board">
+		SELECT * FROM BOARD WHERE BCATEGORY=#{bcategory} AND BAREA=#{bArea} AND CONDITION=#{condition} AND EVENT=#{event}
+	</select>
+
+	<insert id="BOARDINSERT">
+		INSERT INTO BOARD (BPK,BAREA,BCATEGORY,EVENT,CONDITION,BPHOTO,TITLE,MID,CONTENT,PERIOD,BADRR) VALUES((SELECT NVL(MAX(BPK),0)+1 FROM BOARD),#{bArea},#{bcategory},#{event},#{condition},#{bPhoto},#{title},#{mid},#{content},#{period},#{badrr})
+	</insert>
+
+	<update id="BOARDUPDATE">
+		 UPDATE BOARD SET BAREA=#{bArea},BCATEGORY=#{bcategory},BPHOTO=#{bPhoto},CONDITION=#{condition},CONTENT=#{content},PERIOD=#{period},BADRR=#{badrr},EVENT=#{event},TITLE=#{title} WHERE BPK= #{bpk}
+	</update>
+	<update id="BOARDVIEWUPDATE">
+UPDATE BOARD SET VIEWS=VIEWS+1 WHERE BPK=#{bpk}
+</update>
+	<update id="BOARD_status_UPDATE">
+UPDATE BOARD SET STATUS='모집완료' WHERE BPK=#{bpk}
+	</update>
+
+	<delete id="BOARDDEL">
+		DELETE BOARD WHERE BPK=#{bpk}
+	</delete>
+
+</mapper>
+
+
+
+	
+	
+	
+	
+
