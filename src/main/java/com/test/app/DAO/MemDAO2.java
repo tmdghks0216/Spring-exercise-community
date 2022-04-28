@@ -69,6 +69,7 @@ public class MemDAO2 {
 		
 	}
 	public void deleteMember(MemVO vo) {
+		System.out.println(vo);
 		mybatis.delete("MemDAO.MEMBER_DELETE_Content",vo);
 		mybatis.delete("MemDAO.MEMBER_DELETE_Reply",vo);
 		mybatis.delete("MemDAO.MEMBER_DELETE",vo);

@@ -66,6 +66,7 @@ UPDATE BOARD SET STATUS='모집완료' WHERE BPK=#{bpk}
 		DELETE BOARD WHERE BPK=#{bpk}
 	</delete>
 
+
 </mapper>
 
 

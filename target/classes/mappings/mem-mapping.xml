@@ -35,7 +35,7 @@ UPDATE MEMBER SET PASSWORD=#{password} WHERE MID=#{mid}
 </update>
 
 <delete id="MEMBER_DELETE_Content">
-delete board where mid=#{mid}
+DELETE BOARD WHERE MID=#{mid}
 </delete>
 
 <delete id="MEMBER_DELETE_Reply">
