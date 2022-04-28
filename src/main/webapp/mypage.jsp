@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="aa" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 <!--
 	Editorial by HTML5 UP
@@ -102,23 +102,77 @@ overflow:hidden;
 						<h3>내가 작성한글</h3>
 					</header>
 					<div class="posts">
-					<c:forEach var="v" items="${bdata}">
-						<article>
-							<a href="detail.do?bpk=${v.bpk}" class="image"><img src="img/${v.bPhoto}" alt="" /></a>
-							<button class="button" style="float: right; color: green;">${v.status }</button>
-						<h4>${v.title}</h4>
-							<br><br>
-							<ul class="actions">
-								<li><button class="button">${v.condition }</button></li>
-								<li><button class="button">${v.bArea}</button></li>
-								<li><button class="button">${v.event }</button></li>
-							</ul>
-								<div class="ditailday" style="  font-size:1.1em;">작성자 : ${v.mid }</div>
-						<div class="ditailday" style=" float: right; font-size:1.1em;">조회수 : ${v.views }</div>
-						<br><br>
-						<div class="ditailday" style=" float: right; font-size:1.1em;">모집기간 : ${v.bdate } ~ ${v.period.substring(0, 10)}</div>
-						</article>
-					</c:forEach>
+						<c:forEach var="v" items="${bdata}">
+						<c:choose>
+										<c:when test="${v.status  == '모집완료'}">
+					<article>
+								<a href="detail.do?bpk=${v.bpk}" class="image"><img
+									src="img/${v.bPhoto}" alt="" /></a>
+								<button class="button primary" style="float: right; background:#6e7772; color: white;" >${v.status }</button>
+								<h4>${v.title}</h4>
+								<br>
+								<br>
+								<ul class="actions">
+									<c:choose>
+										<c:when test="${v.condition == '상관없음'}">
+
+										</c:when>
+										<c:otherwise>
+											<li><button class="button primary" style="background:#6e7772; border:none; color: white;">${v.condition }</button></li>
+										</c:otherwise>
+									</c:choose>
+
+									<li><button class="button primary" style="background:#6e7772;">${v.bArea}</button></li>
+									<li><button class="button primary"style="background:#6e7772;">${v.event }</button></li>
+								</ul>
+								<div class="ditailday" style="font-size: 1.1em;">작성자 :
+									${v.mid }</div>
+								<div class="ditailday" style="float: right; font-size: 1.1em;">조회수
+									: ${v.views }</div>
+								<br>
+								<br>
+								<div class="ditailday" style="float: right; font-size: 1.1em;">모집기간
+									: <fmt:formatDate pattern="yyyy-MM-dd" value="${v.bdate }"/> ~ ${v.period.substring(0, 10)}</div>
+							</article>
+										</c:when>
+										<c:otherwise>
+											
+												<article>
+								<a href="detail.do?bpk=${v.bpk}" class="image"><img
+									src="img/${v.bPhoto}" alt="" /></a>
+								<button class="button" style="float: right; background: ">${v.status }</button>
+								<h4>${v.title}</h4>
+								<br>
+								<br>
+								<ul class="actions">
+									<c:choose>
+										<c:when test="${v.condition == '상관없음'}">
+
+										</c:when>
+										<c:otherwise>
+											<li><button class="button">${v.condition }</button></li>
+										</c:otherwise>
+									</c:choose>
+
+									<li><button class="button">${v.bArea}</button></li>
+									<li><button class="button">${v.event }</button></li>
+								</ul>
+								<div class="ditailday" style="font-size: 1.1em;">작성자 :
+									${v.mid }</div>
+								<div class="ditailday" style="float: right; font-size: 1.1em;">조회수
+									: ${v.views }</div>
+								<br>
+								<br>
+								<div class="ditailday" style="float: right; font-size: 1.1em;">모집기간
+									: <fmt:formatDate pattern="yyyy-MM-dd" value="${v.bdate }"/> ~ ${v.period.substring(0, 10)}</div>
+							</article>
+											
+											
+										</c:otherwise>
+									</c:choose>
+						
+					
+						</c:forEach>
 					</div>
 					</div>
 					</section>

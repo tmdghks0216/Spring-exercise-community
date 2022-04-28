@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.app.DAO.BoardDAO;
+import com.test.app.DAO.BoardDAO2;
 import com.test.app.Service.BoardService;
 import com.test.app.VO.BoardVO;
 
@@ -14,7 +15,7 @@ import com.test.app.VO.BoardVO;
 public class BoardServiceImpl implements BoardService{
 
 	@Autowired // DI
-	private BoardDAO boardDAO;
+	private BoardDAO2 boardDAO;
 	
 	@Override
 	public void insertBoard(BoardVO vo) {

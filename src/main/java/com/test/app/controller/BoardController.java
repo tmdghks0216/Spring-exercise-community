@@ -54,13 +54,16 @@ public class BoardController {
 	public String getBoard(BoardVO vo,ReplyVO rvo,Model model) {
 		boardService.viewupBoard(vo);
 		List<ReplyVO> datas=new ArrayList<ReplyVO>();
-		datas=ReplyService.get_reply(rvo);
-		System.out.println(datas);
+		       BoardVO  bdata = boardService.getBoardOne(vo);
+		if(bdata!=null) {
+		model.addAttribute("bdata",bdata);//게시물
+		datas=ReplyService.get_reply(rvo); //댓글
 		model.addAttribute("datas",datas);
-
-		model.addAttribute("bdata",boardService.getBoardOne(vo));
-		System.out.println(boardService.getBoardOne(vo));
 		return "detail.jsp";
+		}else {
+			return "redirect:main.do";
+		}
+		
 
 	}
 	//게시물 목록보기

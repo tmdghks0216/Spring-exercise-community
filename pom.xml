@@ -32,6 +32,18 @@
     <artifactId>okhttp</artifactId>
     <version>4.9.3</version>
 </dependency>
+<!-- Mybatis -->
+ <!-- Mybatis -->
+		<dependency>
+    		<groupId>org.mybatis</groupId>
+    		<artifactId>mybatis</artifactId>
+   			<version>3.3.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.mybatis</groupId>
+    		<artifactId>mybatis-spring</artifactId>
+   			<version>1.2.4</version>
+		</dependency>
 	 <!-- 스프링 JDBC -->
       <dependency>
          <groupId>commons-dbcp</groupId>

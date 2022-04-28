@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemDAO">
+
+<select id="MEMBER_One" resultType="mem" >
+SELECT * FROM MEMBER WHERE MID=#{mid}
+</select>
+
+<select id="MEMBER_Login" resultType="mem">
+SELECT * FROM MEMBER WHERE MID=#{mid} AND PASSWORD=#{password}
+</select>
+
+<select id="MEMBER_IDCK" resultType="mem">
+SELECT * FROM MEMBER WHERE NAME=#{name} AND PHONE=#{phone}
+</select>
+
+<insert id="MEMBER_INSERT">
+INSERT INTO MEMBER(MID,PASSWORD,NAME,PHONE,SEX,HOPE_AREA) VALUES(#{mid},#{password},#{name},#{phone},#{sex},#{hope_area})
+</insert>
+
+<update id="MEMBER_UPDATE">
+UPDATE MEMBER SET PASSWORD=#{password},PHONE=#{phone} WHERE MID=#{mid}
+</update>
+
+<delete id="MEMBER_DELETE">
+DELETE MEMBER WHERE MID=#{mid}
+</delete>
+
+<update id="MEMBER_REPORT">
+UPDATE MEMBER SET REPORT=REPORT+1 WHERE MID=#{mid}
+</update>
+
+<update id="MEMBER_UPDATEPW">
+UPDATE MEMBER SET PASSWORD=#{password} WHERE MID=#{mid}
+</update>
+
+<delete id="MEMBER_DELETE_Content">
+delete board where mid=#{mid}
+</delete>
+
+<delete id="MEMBER_DELETE_Reply">
+DELETE REPLY WHERE MID=#{mid}
+</delete>
+</mapper>
+
+	
+
+
+
+	

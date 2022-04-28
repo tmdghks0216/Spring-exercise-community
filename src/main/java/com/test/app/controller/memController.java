@@ -88,7 +88,7 @@ public class memController {
 	@RequestMapping(value ="/updatePw.do", method =   RequestMethod.POST , produces = "application/json; charset=utf-8" )
 	public String pwUpdate(MemVO mvo,HttpSession session,Model model){
 		mvo.setMid((String) session.getAttribute("id"));
-		
+		session.invalidate();
 		memService.updatePWMember(mvo);
 		
 		return "a";
@@ -102,20 +102,20 @@ public class memController {
 	public String phoneck(MemVO mvo,HttpSession session,Model model){
 		System.out.println("문자 API 컨트롤러");
 		System.out.println(mvo);
-		int key=SNS.sns(mvo);
-//	int key= (int)(Math.random() * (99999 - 10000 + 1)) + 10000;  //TEST용 API로 문자 안받고 콘솔로 보여줌
-//		System.out.println(key);
-//		if(key==1) {
-//			return Integer.toString(key);
-//		}else {
-//			return  Integer.toString(key);
-//		}
+//		int key=SNS.sns(mvo);
+	int key= (int)(Math.random() * (99999 - 10000 + 1)) + 10000;  //TEST용 API로 문자 안받고 콘솔로 보여줌
+		System.out.println(key);
+		if(key==1) {
+			return Integer.toString(key);
+		}else {
+			return  Integer.toString(key);
+		}
+	
+//	if(key==1) {
+//		return "a";
+//	}else {
+//		return  Integer.toString(key);
 //	}
-	if(key==1) {
-		return "a";
-	}else {
-		return  Integer.toString(key);
-	}
 }
 	//아이디 중복체크
 	@ResponseBody
@@ -134,7 +134,6 @@ public class memController {
 	@ResponseBody
 	@RequestMapping(value ="/memck.do", method =   RequestMethod.POST , produces = "application/json; charset=utf-8" )
 	public String memck(MemVO mvo,HttpSession session,Model model){
-		System.out.println("memck 컨트롤러");
 		if(memService.ck_member(mvo)==null) {
 			return "true";
 		}else {

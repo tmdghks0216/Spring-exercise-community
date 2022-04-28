@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.app.DAO.ReplyDAO;
+import com.test.app.DAO.ReplyDAO2;
 import com.test.app.Service.ReplyService;
 
 import com.test.app.VO.ReplyVO;
@@ -14,7 +15,7 @@ import com.test.app.VO.ReplyVO;
 public class ReplyServicelmpl implements ReplyService{
 	
 	@Autowired
-	private ReplyDAO replyDAO;
+	private ReplyDAO2 replyDAO;
 	@Override
 	public void insert_reply(ReplyVO vo) {
 		// TODO Auto-generated method stub
@@ -22,11 +23,7 @@ public class ReplyServicelmpl implements ReplyService{
 		
 	}
 
-	@Override
-	public void update_reply(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		replyDAO.update_reply(vo);
-	}
+
 
 	@Override
 	public void delete_reply(ReplyVO vo) {

@@ -211,11 +211,7 @@
 			$('#sample5_address').focus();
 			return;
 		}
-		if ($('.ck-content').text() == '') {
-			alert('내용을 입력해주세요.');
-			$('.ck-content').focus();
-			return;
-		}
+
 		document.form1.submit();
 	}
 

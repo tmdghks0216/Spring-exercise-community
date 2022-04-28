@@ -26,9 +26,10 @@
 .ditailday {
 	float: : right;
 }
-img{
-width: auto; 
-height: auto;
+
+img {
+	width: auto;
+	height: auto;
 }
 </style>
 </head>
@@ -53,23 +54,36 @@ height: auto;
 
 						<c:choose>
 							<c:when test="${id==bdata.mid}">
-							
-								<div class="report" id="report" style="float: right; margin-left: 10px;">
-									
+
+								<div class="report" id="report"
+									style="float: right; margin-left: 10px;">
+
 									<a href="dletboard.do?bpk=${bdata.bpk }" class="button">삭제하기</a>
 								</div>
-								
+
 								<div class="report" id="report" style="float: right;">
 									<a href="boardupdatview.do?bpk=${bdata.bpk }" class="button">수정하기</a>
-									</div>
+								</div>
 							</c:when>
 
-							<c:otherwise>
-								<div class="report" id="report" style="float: right;">
-									<a href="report.do?mid=${bdata.mid }" class="button">신고하기</a>
-								</div>
+			<c:otherwise>
+									<c:choose>
+								<c:when test="${id==null}">
+
+								</c:when>
+
+								<c:otherwise>
+									<div class="report" id="report" style="float: right;">
+										<a href="report.do?mid=${bdata.mid }" class="button">신고하기</a>
+									</div>
+								</c:otherwise>
+							</c:choose>
 							</c:otherwise>
+
 						</c:choose>
+
+
+
 
 						<div>
 							<h1>${bdata.title}</h1>
@@ -80,13 +94,12 @@ height: auto;
 						<div class="ditailName" style="float: right;">
 							<h5 style="font-size: 1.3em;">작성자 : ${bdata.mid}</h5>
 						</div>
-						<br>
-						<br>
+						<br> <br>
 						<div class="ditailday" style="float: right; font-size: 1.1em;">모집기간
-							: ${bdata.bdate } ~ ${bdata.period.substring(0, 10)}</div>
+							: <fmt:formatDate pattern="yyyy-MM-dd" value="${bdata.bdate }"/> ~ ${bdata.period.substring(0, 10)}</div>
 					</div>
 					<br>
-					
+
 				</section>
 				<section>
 					<p>${bdata.content }</p>
@@ -95,14 +108,14 @@ height: auto;
 
 				</section>
 				<section>
-				<br>
-						<div class="ditailday" style="float: right; font-size: 1.1em;">
+					<br>
+					<div class="ditailday" style="float: right; font-size: 1.1em;">
 						<h3>장소 : ${bdata.badrr }</h3>
 					</div>
-				 <div>
-            <div id="map" style="width: 100%; height: 350px; flex-grow: 1;"></div>
-         </div>
-				
+					<div>
+						<div id="map" style="width: 100%; height: 350px; flex-grow: 1;"></div>
+					</div>
+
 				</section>
 				<section>
 					<div>
@@ -187,9 +200,9 @@ height: auto;
          }
       });
    </script>
-    <script type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45a4ba2681826e6c415ea9f0055fa1e5&libraries=services"></script>
-   <script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45a4ba2681826e6c415ea9f0055fa1e5&libraries=services"></script>
+	<script>
       var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
       mapOption = {
          center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
