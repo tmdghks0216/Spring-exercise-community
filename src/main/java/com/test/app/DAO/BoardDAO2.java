@@ -25,7 +25,7 @@ public class BoardDAO2 {
 		mybatis.update("BoardDAO.BOARDUPDATE",vo);
 	}
 	public void deleteBoard(BoardVO vo) {
-		mybatis.delete("BoardDAO.BoardDAO.BOARDDEL",vo);
+		mybatis.delete("BoardDAO.BOARDDEL",vo);
 	}
 	
 	
